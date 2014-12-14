@@ -1,17 +1,20 @@
 package de.oetting.jws.client;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class WebserviceProviderClientTest {
 
 	@Test
-	public void callServer_doesNotThrowException() throws Exception {
-		whenCallingServer();
+	public void callServer_returnsOk() throws Exception {
+		String returnValue = whenCallingServer();
+		assertEquals("ok", returnValue);
 	}
 
-	private void whenCallingServer() throws Exception {
+	private String whenCallingServer() throws Exception {
 		WebserviceProviderClient classUnderTest = new WebserviceProviderClient();
-		classUnderTest.callService();
+		return classUnderTest.callService();
 	}
 
 }
