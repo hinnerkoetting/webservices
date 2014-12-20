@@ -1,0 +1,9 @@
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<SOAP-ENV:Header xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" />
+	<S:Body>
+		<ns2:add xmlns:ns2="http://server.jws.oetting.de/">
+			<arg0>1</arg0>
+			<arg1>2</arg1>
+		</ns2:add>
+	</S:Body>
+</S:Envelope>

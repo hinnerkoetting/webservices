@@ -15,6 +15,8 @@ import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
+import org.w3c.dom.NodeList;
+
 public class Validator implements SOAPHandler<SOAPMessageContext> {
 
 	@Override
@@ -34,13 +36,40 @@ public class Validator implements SOAPHandler<SOAPMessageContext> {
 
 	private void validateFirstNumberIsNotTooBig(SOAPMessageContext context) throws SOAPException {
 		SOAPBody soapBody = context.getMessage().getSOAPBody();
-		Iterator childElements = soapBody.getChildElements();
-		childElements.next();
-		Node element = (Node) childElements.next();
-		Node firstParameter = (Node) element.getChildNodes().item(1);
+		Node element = findAddElement(soapBody);
+		Node firstParameter = findArg0Element(element);
 		if (Integer.valueOf(firstParameter.getTextContent()) > 10) {
 			throw new ProtocolException("Wert ist zu gross");
 		}
+	}
+
+	private Node findArg0Element(Node element) {
+		return findElementWithName(element.getChildNodes(), "arg0");
+	}
+
+	@SuppressWarnings("unchecked")
+	private Node findAddElement(SOAPBody soapBody) {
+		return findElementWithName(soapBody.getChildElements(), "add");
+	}
+
+	private Node findElementWithName(Iterator<Node> childElements, String name) {
+		while (childElements.hasNext()) {
+			Node nextNode = (Node) childElements.next();
+			if (nextNode.getNodeName().endsWith(name)) {
+				return nextNode;
+			}
+		}
+		throw new IllegalArgumentException(name + ": element not found");
+	}
+
+	private Node findElementWithName(NodeList list, String name) {
+		for (int i = 0; i < list.getLength(); i++) {
+			Node nextNode = (Node) list.item(i);
+			if (nextNode.getNodeName().contains(name)) {
+				return nextNode;
+			}
+		}
+		throw new IllegalArgumentException(name + ": element not found");
 	}
 
 	@Override
