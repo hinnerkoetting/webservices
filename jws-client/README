@@ -1,0 +1,2 @@
+Generated classes with command
+wsimport -Xnocompile -s src/main/generated http://localhost:8080/jws-server/CalculatorService?wsdl
