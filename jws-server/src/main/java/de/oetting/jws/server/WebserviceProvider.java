@@ -14,6 +14,9 @@ import javax.xml.ws.Provider;
 import javax.xml.ws.ServiceMode;
 import javax.xml.ws.WebServiceProvider;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @WebServiceProvider(
 	    portName="ProviderPort",
 	    serviceName="WebserviceProvider",
@@ -23,9 +26,13 @@ import javax.xml.ws.WebServiceProvider;
 	@ServiceMode(value=javax.xml.ws.Service.Mode.MESSAGE)
 public class WebserviceProvider implements Provider<SOAPMessage> {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(WebserviceProvider.class);
+	
 	@SuppressWarnings("unchecked")
 	public SOAPMessage invoke(SOAPMessage arg0) {
 		try {
+			LOGGER.info( arg0.getSOAPBody().getTextContent());
+			LOGGER.info( arg0.getSOAPHeader().getTextContent());
 			Iterator<AttachmentPart> attachments = arg0.getAttachments();
 			while (attachments.hasNext()) {
 				AttachmentPart part = attachments.next();
