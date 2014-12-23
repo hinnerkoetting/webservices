@@ -3,7 +3,7 @@ package de.oetting.jws.server;
 import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
-@WebService(serviceName= "CalculatorService")
+@WebService(serviceName= "AdditionService")
 @HandlerChain(file = "handlers.xml")
 public class HandlerChainService {
 
