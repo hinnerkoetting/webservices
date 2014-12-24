@@ -9,6 +9,7 @@ import javax.ws.rs.core.Application;
 @Path("calculator")
 public class Calculator extends Application implements LocalCalc{
 
+
 	public String bla() {
 		return "bla";
 	}
