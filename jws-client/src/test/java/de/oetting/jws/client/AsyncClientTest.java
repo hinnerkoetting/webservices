@@ -13,5 +13,11 @@ public class AsyncClientTest {
 		int sum = new AsyncClient().executeAsync(1, 2);
 		assertThat(sum, is(equalTo(3)));
 	}
+	
+	@Test
+	public void executeDispatch_always_returnsSum() {
+		int sum = new AsyncClient().executeWithDispatch(1, 2);
+		assertThat(sum, is(equalTo(3)));
+	}
 
 }
