@@ -2,7 +2,6 @@ package de.oetting.jws.server;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.xml.ws.Service;
 
 @WebService
 public class CalculatorService {
