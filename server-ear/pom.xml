@@ -1,18 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.oetting.webservices</groupId>
-	<artifactId>jws-server-ejb</artifactId>
+	<groupId>de.oetting.webservice</groupId>
+	<artifactId>server-ear</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>ejb</packaging>
+	<packaging>ear</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
-		</dependency>
-	</dependencies>
 	<plugins>
 		<plugin>
 			<artifactId>maven-compiler-plugin</artifactId>
@@ -23,11 +16,25 @@
 		</plugin>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-ejb-plugin</artifactId>
-			<version>2.4</version>
+			<artifactId>maven-ear-plugin</artifactId>
+			<version>2.10</version>
 			<configuration>
-				<ejbVersion>3.2</ejbVersion>
+				<modules>
+					<ejbModule>
+						<groupId>de.oetting.webservices</groupId>
+						<artifactId>jws-server-ejb</artifactId>
+					</ejbModule>
+				</modules>
 			</configuration>
 		</plugin>
 	</plugins>
+	
+	<dependencies>
+		<dependency>
+			<groupId>de.oetting.webservices</groupId>
+			<artifactId>jws-server-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
 </project>
