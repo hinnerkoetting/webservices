@@ -24,6 +24,10 @@
 						<groupId>de.oetting.webservices</groupId>
 						<artifactId>jws-server-ejb</artifactId>
 					</ejbModule>
+					<ejbModule>
+						<groupId>de.oetting.webservices</groupId>
+						<artifactId>rs-server-ejb</artifactId>
+					</ejbModule>
 					<webModule>
 						<groupId>de.oetting.webservices</groupId>
 						<artifactId>jws-server</artifactId>
@@ -37,6 +41,12 @@
 		<dependency>
 			<groupId>de.oetting.webservices</groupId>
 			<artifactId>jws-server-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>de.oetting.webservices</groupId>
+			<artifactId>rs-server-ejb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
