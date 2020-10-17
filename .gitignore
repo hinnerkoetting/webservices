@@ -1,4 +1,5 @@
 .metadata
 RemoteSystemsTempFiles/
 Servers/
-
+.idea
+target/
